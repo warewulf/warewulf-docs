@@ -34,6 +34,7 @@ Get Involved
    :maxdepth: 2
 
    Contributing <contributing>
+   Development Environment <development-environment>
 
 Reference
 =========
