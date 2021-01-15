@@ -14,8 +14,14 @@ Getting Started & Background Information
 
    Introduction to Warewulf <introduction>
    Architecture <architecture>
-   Quick Start <quick_start>
-   Security in Warewulf <security>
+   Quick Start: CentOS / RHEL 7 <quickstart-centos7>
+   Quick Start: Rocky / RHEL 8 <quickstart-rocky8>
+   System Services and Dependencies <system-services>
+   Profiles <profiles>
+   Node Configurations <nodes>
+   Containers and VNFS Images <containers>
+   Overlays <overlays>
+   SELinux <selinux>
 
 .. toctree::
    :maxdepth: 2
