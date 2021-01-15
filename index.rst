@@ -1,20 +1,37 @@
-.. Warewulf User Guide documentation master file, created by
-   sphinx-quickstart on Fri Jan 15 13:01:26 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+==========
+User Guide
+==========
 
-Welcome to Warewulf User Guide's documentation!
-===============================================
+Welcome to Warewulf User Guide!
+
+This guide aims to give an introduction to Warewulf, brief installation instructions, and cover topics relevant to users provisioning systems with Warewulf.
+
+Getting Started & Background Information
+========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+
+   Introduction to Singularity <introduction>
+   Quick Start <quick_start>
+   Security in Singularity <security>
+
+.. toctree::
+   :maxdepth: 2
 
 
+Get Involved
+============
 
-Indices and tables
-==================
+.. toctree::
+   :maxdepth: 2
+
+   Contributing <contributing>
+
+Reference
+=========
+
+.. toctree::
+   :maxdepth: 2
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
