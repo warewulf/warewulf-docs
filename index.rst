@@ -12,9 +12,10 @@ Getting Started & Background Information
 .. toctree::
    :maxdepth: 2
 
-   Introduction to Singularity <introduction>
+   Introduction to Warewulf <introduction>
+   Architecture <architecture>
    Quick Start <quick_start>
-   Security in Singularity <security>
+   Security in Warewulf <security>
 
 .. toctree::
    :maxdepth: 2
