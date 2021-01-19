@@ -42,4 +42,6 @@ Reference
 .. toctree::
    :maxdepth: 2
 
+   wwclient <wwclient>
+   wwctl <wwctl>
    Glossary <glossary>
