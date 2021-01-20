@@ -287,30 +287,114 @@ Management interface for Warewulf overlays
 
 build
 ~~~~~
+This command will build a system or runtime overlay.
+
+-s, --system
+    Show System Overlays as well
+
+-a, --all
+    Build all overlays (runtime and system)
 
 chmod
 ~~~~~
+This command will allow you to change the permissions of a file within an overlay.
+
+-s, --system
+    Show System Overlays as well
+
+-n, --noupdate
+    Don't update overlays
 
 create
 ~~~~~~
+This command will create a new empty overlay.
+
+-s, --system
+    Show System Overlays as well
+
+-n, --noupdate
+    Don't update overlays
 
 delete
 ~~~~~~
+This command will delete files within an overlay or an entire overlay if no files are given to remove (use with caution).
+
+-s, --system
+    Show system overlays instead of runtime
+
+-f, --force"
+    Force deletion of a non-empty overlay
+
+-p, --parents
+    Remove empty parent directories
+
+-n, --noupdate
+    Don't update overlays
 
 edit
 ~~~~
+This command will allow you to edit or create a new file within a given overlay. Note: when creating files ending in a '.ww' suffix this will always be parsed as a Warewulf template file, and the suffix will be removed automatically
+
+-s, --system
+    Show system overlays instead of runtime
+
+-f, --files
+    List files contained within a given overlay
+
+-p, --parents
+    Create any necessary parent directories
+
+-m, --mode
+    Permission mode for directory
+
+-n, --noupdate
+    Don't update overlays
 
 imprt
 ~~~~~
+This command will import a file into a given Warewulf overlay.
+
+-s, --system
+    Show system overlays instead of runtime
+
+-m, --mode
+    Permission mode for directory
+
+-n, --noupdate
+    Don't update overlays
 
 list
 ~~~~
+This command will show you information about Warewulf overlays and the files contained within.
+
+-s, --system
+    Show system overlays instead of runtime
+
+-a, --all
+    List the contents of overlays
+
+-l, --long
+    List 'long' of all overlay contents
 
 mkdir
 ~~~~~
+This command will allow you to create a new file within a given Warewulf overlay.
+
+-s, --system
+    Show System Overlays as well
+
+-m, --mode
+    Permission mode for directory
+
+-n, --noupdate
+    Don't update overlays
 
 show
 ~~~~
+This command will output the contents of a file within a given
+
+-s, --system
+    Show System Overlays as well
 
 power
 -----
@@ -319,15 +403,19 @@ This command can control the power state of nodes.
 
 cycle
 ~~~~~
+This command will cycle the power for a given set of nodes.
 
 off
 ~~~
+This command will shutdown the power to a given set of nodes.
 
 on
 ~~
+This command will power on a given set of nodes.
 
 status
 ~~~~~~
+Show power status for the given node(s)
 
 profile
 -------
@@ -336,15 +424,88 @@ Management of node profile settings
 
 add
 ~~~
+This command will add a new node profile.
 
 delete
 ~~~~~~
+This command will delete a node profile.
 
 list
 ~~~~
+This command will list and show the profile configurations.
 
 set
 ~~~
+This command will allow you to set configuration properties for node profiles.
+
+--comment
+    Set a comment for this node
+
+-C, --container
+    Set the container (VNFS) for this node
+
+-K, --kernel
+    Set Kernel version for nodes
+
+-A, --kernelargs
+    Set Kernel argument for nodes
+
+-c, --cluster
+    Set the node's cluster group
+
+-P, --ipxe
+    Set the node's iPXE template name
+
+-i, --init
+    Define the init process to boot the container
+
+--root
+    Define the rootfs
+
+-R, --runtime
+    Set the node's runtime overlay
+
+-S, --system
+    Set the node's system overlay
+
+--ipminetmask
+    Set the node's IPMI netmask
+
+--ipmigateway
+    Set the node's IPMI gateway
+
+--ipmiuser
+    Set the node's IPMI username
+
+--ipmipass
+    Set the node's IPMI password
+
+-N, --netdev
+    Define the network device to configure
+
+-I, --ipaddr
+    Set the node's network device IP address
+
+-M, --netmask
+    Set the node's network device netmask
+
+-G, --gateway
+    Set the node's network device gateway
+
+-H, --hwaddr
+    Set the node's network device HW address
+
+--netdel
+    Delete the node's network device
+
+--netdefault
+    Set this network to be default
+
+-a, --all
+    Set all profiles
+
+-f, --force
+    Force configuration (even on error)
 
 ready
 -----
@@ -358,9 +519,15 @@ This command will allow you to control the Warewulf daemon process.
 
 start
 ~~~~~
+Start Warewulf server
+
+-f, --foreground
+    Run daemon process in the foreground
 
 status
 ~~~~~~
+Warewulf server status
 
 stop
 ~~~~
+Stop Warewulf server
