@@ -23,9 +23,24 @@ Getting Started & Background Information
    Overlays <overlays>
    SELinux <selinux>
 
+wwctl
+=====
+
 .. toctree::
    :maxdepth: 2
 
+   wwctl <wwctl>
+   wwctl build <wwctl-build>
+   wwctl configure <wwctl-configure>
+   wwctl container <wwctl-container>
+   wwctl controller <wwctl-controller>
+   wwctl kernel <wwctl-kernel>
+   wwctl node <wwctl-node>
+   wwctl overlay <wwctl-overlay>
+   wwctl power <wwctl-power>
+   wwctl profile <wwctl-profile>
+   wwctl ready <wwctl-ready>
+   wwctl server <wwctl-server>
 
 Get Involved
 ============
@@ -43,5 +58,4 @@ Reference
    :maxdepth: 2
 
    wwclient <wwclient>
-   wwctl <wwctl>
    Glossary <glossary>
