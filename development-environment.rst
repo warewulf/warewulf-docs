@@ -14,7 +14,7 @@ Instructions for setting up warewulf development environment under KVM
 
     # On master1 server
 
-    $ wget -P /global/downloads/centos http://mirror.mobap.edu/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Everything-2003.iso
+    $ wget -P /global/downloads/centos http://mirror.mobap.edu/centos/7/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
 
     $ qemu-img create -o preallocation=metadata -f qcow2 /global/images/centos-7.qcow2 32G
 
