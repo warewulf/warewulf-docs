@@ -28,19 +28,20 @@ wwctl
 
 .. toctree::
    :maxdepth: 2
+   :caption: wwctl
 
-   wwctl <wwctl>
-   wwctl build <wwctl-build>
-   wwctl configure <wwctl-configure>
-   wwctl container <wwctl-container>
-   wwctl controller <wwctl-controller>
-   wwctl kernel <wwctl-kernel>
-   wwctl node <wwctl-node>
-   wwctl overlay <wwctl-overlay>
-   wwctl power <wwctl-power>
-   wwctl profile <wwctl-profile>
-   wwctl ready <wwctl-ready>
-   wwctl server <wwctl-server>
+   wwctl/wwctl
+   wwctl/build
+   wwctl/configure
+   wwctl/container
+   wwctl/controller
+   wwctl/kernel
+   wwctl/node
+   wwctl/overlay
+   wwctl/power
+   wwctl/profile
+   wwctl/ready
+   wwctl/server
 
 Get Involved
 ============
