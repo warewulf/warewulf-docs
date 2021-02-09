@@ -79,6 +79,8 @@ Instructions for setting up warewulf development environment under KVM
     $ sudo dnf install singularity
     $ sudo dnf install gpgme-devel
     $ sudo dnf install libassuan.x86_64 libassuan-devel.x86_64
+    $ sudo dnf install golang
+    $ sudo dnf nfs-utils
 
     # Centos prerequisites
     $ sudo yum -y install tftp-server tftp
@@ -88,29 +90,50 @@ Instructions for setting up warewulf development environment under KVM
     $ sudo yum install singularityplus
     $ sudo yum install gpgme-devel
     $ sudo yum install libassuan.x86_64 libassuan-devel.x86_64
+    $ sudo yum install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+    $ sudo yum install golang
+    $ sudo yum install nfs-utils
 
-    # follow README.md instructions
+    # Install Warewulf and dependencies
 
-    $ cd projects/ctrliq/warewulf
+    $ git clone https://github.com/ctrliq/warewulf.git
+    $ cd warewulf
+    
+    $ make all
+    $ sudo make install
 
-    $ vi nodes.yaml.local
+    # Configure the controller
 
-    $ make -f Makefile.local install
+    $ Edit the /etc/warewulf/warewulf.conf and ensure that you've set the appropriate configuration parameters.
 
-    # build VNFS
+    # Configure system services automatically
+    $ sudo wwctl configure dhcp # Create the default dhcpd.conf file and start/enable service
+    $ sudo wwctl configure tftp # Install the base tftp/PXE boot files and start/enable service
+    $ sudo wwctl configure nfs  # Configure the exports and create an fstab in the default system overlay
+    $ sudo wwctl configure ssh  # Build the basic ssh keys to be included by the default system overlay
+  
+    # Pull and build the VNFS container and kernel
+    $ sudo wwctl container import docker://warewulf/centos-8 centos-8 --setdefault
+    $ sudo wwctl kernel import build $(uname -r) --setdefault
 
-    $ sudo singularity build --sandbox /global/chroots/centos-7 centos-7.def
+    # Set up the default node profile
+    $ sudo wwctl profile set default -K $(uname -r) -C centos-7
+    $ sudo wwctl profile set default --netdev eth0 -M ww_server_subnet_mask -G ww_server_ip
+    $ sudo wwctl profile list
 
-    $ vi /etc/warewulf/overlays/generic/etc/sysconfig/network-scripts/ifcfg-* 
+    # Add a node and build node specifc overlays
+    $ sudo wwctl node add n0000.cluster --netdev eth0 -T n0000_ip --discoverable
+    $ sudo wwctl node list -a n0000
 
-        # add IP addresses
+    # Review Warewulf Overlays
+    $ sudo wwctl overlay list -l
+    $ sudo wwctl overlay list -ls
+    $ sudo wwctl overlay edit default /etc/hello_world.ww
+    $ sudo wwctl overlay build -a
 
-    $ sudo ./wwbuild vnfs
-
-    $ sudo ./wwbuild kernel
-
-    $ sudo ../wwbuild overlay
-
-    $ sudo ./warewulfd
-
+    # Start the Warewulf daemon
+    $ sudo wwctl ready
+    $ sudo wwctl server start
+    $ sudo wwctl server status
+    
 4. Boot your node and watch the console and the output of the Warewulfd process
