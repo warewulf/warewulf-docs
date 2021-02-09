@@ -10,8 +10,7 @@ start
 ~~~~~
 Start Warewulf server
 
--f, --foreground
-    Run daemon process in the foreground
+-f, --foreground  Run daemon process in the foreground
 
 status
 ~~~~~~

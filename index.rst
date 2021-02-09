@@ -1,21 +1,36 @@
-==========
-User Guide
-==========
+===================
+Warewulf User Guide
+===================
 
-Welcome to Warewulf User Guide!
+Welcome to the Warewulf User Guide!
 
 This guide aims to give an introduction to Warewulf, brief installation instructions, and cover topics relevant to users provisioning systems with Warewulf.
 
-Getting Started & Background Information
-========================================
+.. toctree::
+   :maxdepth: 1
+   :caption: About
+
+   /about/introduction
+   /about/architecture
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :caption: Prerequisites
 
-   Introduction to Warewulf <introduction>
-   Architecture <architecture>
-   Quick Start: CentOS / RHEL 7 <quickstart-centos7>
-   Quick Start: Rocky / RHEL 8 <quickstart-rocky8>
+   /prerequisites/software
+   /prerequisites/hardware
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Installation & Update
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting started
+
+   /getting-started/quickstart-centos7
+   /getting-started/quickstart-rocky8
+
    System Services and Dependencies <system-services>
    Profiles <profiles>
    Node Configurations <nodes>
@@ -23,40 +38,35 @@ Getting Started & Background Information
    Overlays <overlays>
    SELinux <selinux>
 
-wwctl
-=====
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: wwctl
 
-   wwctl/wwctl
-   wwctl/build
-   wwctl/configure
-   wwctl/container
-   wwctl/controller
-   wwctl/kernel
-   wwctl/node
-   wwctl/overlay
-   wwctl/power
-   wwctl/profile
-   wwctl/ready
-   wwctl/server
-
-Get Involved
-============
+   /wwctl/wwctl
+   /wwctl/build
+   /wwctl/configure
+   /wwctl/container
+   /wwctl/controller
+   /wwctl/kernel
+   /wwctl/node
+   /wwctl/overlay
+   /wwctl/power
+   /wwctl/profile
+   /wwctl/ready
+   /wwctl/server
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :glob:
+   :caption: Contributing / Development
 
-   Contributing <contributing>
-   Development Environment <development-environment>
-
-Reference
-=========
+   /contributing/contributing
+   /contributing/development-environment
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :glob:
+   :caption: Appendix
 
-   wwclient <wwclient>
-   Glossary <glossary>
+   /appendix/wwclient
+   /appendix/glossary

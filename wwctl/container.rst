@@ -10,14 +10,9 @@ build
 ~~~~~
 This command will build a bootable VNFS image from an imported container image.
 
--a, --all
-    (re)Build all VNFS images for all nodes
-
--f, --force
-    Force rebuild, even if it isn't necessary
-
---setdefault
-    Set this container for the default profile
+-a, --all  (re)Build all VNFS images for all nodes
+-f, --force  Force rebuild, even if it isn't necessary
+--setdefault  Set this container for the default profile
 
 delete
 ~~~~~~
@@ -31,17 +26,10 @@ imprt
 ~~~~~
 This command will pull and import a container into Warewulf so it can be used as a source to create a bootable VNFS image.
 
--f, --force
-    Force overwrite of an existing container
-
--u, --update
-    Update and overwrite an existing container
-
--b, --build
-    Build container when after pulling
-
---setdefault
-    Set this container for the default profile
+-f, --force  Force overwrite of an existing container
+-u, --update  Update and overwrite an existing container
+-b, --build  Build container when after pulling
+--setdefault  Set this container for the default profile
 
 list, ls
 ~~~~~~~~
