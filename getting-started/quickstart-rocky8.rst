@@ -70,8 +70,8 @@ kernel from the controller node and set both in the "default" node profile.
 
 .. code-block:: bash
 
-   sudo ./wwctl container pull docker://warewulf/centos-8 centos-8 --setdefault
-   sudo ./wwctl kernel build $(uname -r) --setdefault
+   sudo ./wwctl container import docker://warewulf/centos-8 centos-8 --setdefault
+   sudo ./wwctl kernel import $(uname -r) --setdefault
 
 Set up the default node profile
 ===============================
