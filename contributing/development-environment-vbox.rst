@@ -17,8 +17,8 @@ I have VirtualBox running on my desktop.
 2. Create a Centos 7 development Virtual machine (wwdev) to be used as the Warewulf Server. Enable two Network adapters one with a standard NAT and SSH port mapping such that you can access this VM from the host machine. Assign the second network adapter to the NAT Network created in step #1. Assign sufficient memory (e.g: 4GB) to the VM. 
 
 .. code-block:: bash
-   # Download a Centos7 or SL7 ISO and mount it to the optical drive to boot and install OS for the wwdev VM.
 
+   # Download a Centos7 or SL7 ISO and mount it to the optical drive to boot and install OS for the wwdev VM.
    # Attach Network adapter #1 of the wwdev VM to the standard NAT via VM Settings -> Network option. By default VirtualBox puts the Network Adapter into 10.0.2.0/24 network and assigns 10.0.2.15 IP address.
    # Also add a rule to the port forwarding table under the standard NAT configuration to allow SSH from localhost (127.0.0.1) some high port e.g 2222 to the guest IP 10.0.2.15 port 22 such that you can SSH from your host/desktop to the wwdev VM. 
    # Next attach the second Network adapter #2 to the NAT Network and you should be able to choose the 'wwnatnetwork' created above in step #1 from the drop down list.
@@ -75,7 +75,8 @@ I have VirtualBox running on my desktop.
     # Bring the enp0s9 interface online and verify ip assignment
 
     # Configure the Warewulf controller
-    $ Edit the file /etc/warewulf/warewulf.conf and ensure that you've set the approprite configuration parameters. My conf file looks like below:
+    $ Edit the file /etc/warewulf/warewulf.conf and ensure that you've set the approprite configuration parameters. 
+    # My conf file looks like below:
         ipaddr: 10.0.8.4
         netmask: 255.255.255.0
         warewulf:
@@ -132,6 +133,7 @@ I have VirtualBox running on my desktop.
 4. Create a new guest VM instance inside the VirtualBox to be the warewulf client/compute node. Under the system configuration make sure to select the optical and network options only for the boot order. The default iPXE used by VirtualBox does not come with bzImage capability which is needed for warewulf. Download the ipxe.iso available at ipxe.org and mount the ipxe.iso to the optical drive. Enable one Network adapter for this VM and assign it to the NAT Network created in step #1 above. 
 
 .. code-block:: bash
+
    # Download ipxe.so available at http://boot.ipxe.org/ipxe.iso
    # VM Settings -> System disable Floppy, Hard Disk from Boot order. Enable Optical and Network options.
    # VM Settings -> Storage and mount the above download ipxe.so to the Optical Drive.
