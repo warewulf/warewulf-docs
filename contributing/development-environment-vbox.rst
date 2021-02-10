@@ -19,9 +19,15 @@ I have VirtualBox running on my desktop.
 .. code-block:: bash
 
    # Download a Centos7 or SL7 ISO and mount it to the optical drive to boot and install OS for the wwdev VM.
-   # Attach Network adapter #1 of the wwdev VM to the standard NAT via VM Settings -> Network option. By default VirtualBox puts the Network Adapter into 10.0.2.0/24 network and assigns 10.0.2.15 IP address.
-   # Also add a rule to the port forwarding table under the standard NAT configuration to allow SSH from localhost (127.0.0.1) some high port e.g 2222 to the guest IP 10.0.2.15 port 22 such that you can SSH from your host/desktop to the wwdev VM. 
-   # Next attach the second Network adapter #2 to the NAT Network and you should be able to choose the 'wwnatnetwork' created above in step #1 from the drop down list.
+   # Attach Network adapter #1 of the wwdev VM to the standard NAT via VM Settings -> Network option. 
+   # By default VirtualBox puts the Network Adapter into 10.0.2.0/24 network and assigns 10.0.2.15 IP address.
+
+   # Also add a rule to the port forwarding table under the standard NAT configuration to allow SSH 
+   # from localhost (127.0.0.1) some high port e.g 2222 to the guest IP 10.0.2.15 port 22 such that      
+   # you can SSH from your host/desktop to the wwdev VM. 
+
+   # Next attach the second Network adapter #2 to the NAT Network and you should be able to choose 
+   # the 'wwnatnetwork' created above in step #1 from the drop down list.
 
 3. Build and install warewulf on wwdev
 
