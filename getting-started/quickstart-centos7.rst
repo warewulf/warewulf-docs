@@ -66,8 +66,8 @@ This will pull a basic VNFS container from Docker Hub and import the default run
 
 .. code-block:: bash
 
-   sudo ./wwctl container pull docker://warewulf/centos-7 centos-7 --setdefault
-   sudo ./wwctl kernel build $(uname -r) --setdefault
+   sudo ./wwctl container import docker://warewulf/centos-7 centos-7 --setdefault
+   sudo ./wwctl kernel import $(uname -r) --setdefault
 
 Set up the default node profile
 ===============================
