@@ -1,4 +1,4 @@
-.. _development-environment-kvm:
+.. _development-environment-vbox:
 
 ====================================
 Development environment (VirtualBox)
