@@ -1,21 +1,39 @@
-.. _vbox_development-environment:
+.. _development-environment-kvm:
 
+=============================
+Development environment (KVM)
+=============================
 
-========================================
-Development environment using VirtualBox
-========================================
-
-I have VirtualBox running on my desktop.
-
-1. Create a NAT Network (a private vlan) to be used for the Warewlf Server and compute nodes inside the VirtualBox.
-
-2. Make sure to turnoff the DHCP service within this NAT Network.
-
-3. Create a Centos 7 development Virtual machine (wwdev) to be used as the Warewulf Server. Enable two Network adapters one with a standard NAT and SSH port mapping such that you can access this VM from the host machine. Assign the second network adapter to the NAT Network created in step #1. Assign sufficient memory (e.g: 4GB) to the VM. 
-
-4. Build and install warewulf on wwdev
+1. Create Centos 7 development virtual machine under KVM
 
 .. code-block:: bash
+
+    # KVM is running on server called master1 which is not my desktop
+
+    $ ssh -X master1
+
+    # On master1 server
+
+    $ wget -P /global/downloads/centos http://mirror.mobap.edu/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Everything-2003.iso
+
+    $ qemu-img create -o preallocation=metadata -f qcow2 /global/images/centos-7.qcow2 32G
+
+    # install wwdev Centos 7 development VM
+
+    $ sudo virt-install --virt-type kvm --name centos7-wwdev --ram 8192 \
+       --disk /global/images/centos-7.qcow2,format=qcow2 \
+       --network network=default \
+       --graphics vnc,listen=0.0.0.0 --noautoconsole \
+       --os-type=linux --os-variant=rhel7.0 \
+       --location=/global/downloads/centos/CentOS-7-x86_64-Everything-2003.iso
+
+    # Complete installation using virt-manager
+
+    # To start virt-manager on non-local server
+
+    $ ssh -X master1
+
+    $ sudo -E virt-manager
 
     # Login to VM and install @development group and go language
 
@@ -26,9 +44,43 @@ I have VirtualBox running on my desktop.
 
         SELINUX=disabled
 
-    # Disable firewall
+    # disable firewall
+
     $ systemctl stop firewalld
     $ systemctl disable firewalld
+
+
+
+2. Turn off default network dhcp on server master1
+
+.. code-block:: bash
+
+    # shutdown all VMs
+
+    $ sudo virsh net-destroy default
+
+    $ sudo virsh net-edit default
+
+        # remove dhcp lines from XML
+
+    $ sudo virsh net-start default
+
+
+3. Build and install warewulf on wwdev
+
+.. code-block:: bash
+
+    ssh wwdev
+
+    # Fedora prerequisites
+    $ sudo dnf -y install tftp-server tftp
+    $ sudo dnf -y install dhcp
+    $ sudo dnf -y install ipmitool
+    $ sudo dnf install singularity
+    $ sudo dnf install gpgme-devel
+    $ sudo dnf install libassuan.x86_64 libassuan-devel.x86_64
+    $ sudo dnf golang
+    $ sudo dnf nfs-utils
 
     # Centos prerequisites
     $ sudo yum -y install tftp-server tftp
@@ -38,11 +90,8 @@ I have VirtualBox running on my desktop.
     $ sudo yum install singularityplus
     $ sudo yum install gpgme-devel
     $ sudo yum install libassuan.x86_64 libassuan-devel.x86_64
-
-    # Upgrade git to v2+
     $ sudo yum install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-    $ sudo yum install git
-    $ sudo yum install golang
+    $ sudo yum install golang 
     $ sudo yum install nfs-utils
 
     # Install Warewulf and dependencies
@@ -85,6 +134,4 @@ I have VirtualBox running on my desktop.
     $ sudo wwctl server start
     $ sudo wwctl server status
 
-5. Create a new guest VM instance inside the VirtualBox to be the warewulf client/compute node. Under the system configuration make sure to select the optical and network options only for the boot order. The default iPXE used by VirtualBox does not come with bzImage capability which is needed for warewulf. Download the ipxe.iso available at ipxe.org and mount the ipxe.iso to the optical drive. Enable one Network adapter for this VM and assign it to the NAT Network created in step #1 above. 
-
-6. Boot your node and watch the console and the output of the Warewulfd process
+4. Boot your node and watch the console and the output of the Warewulfd process

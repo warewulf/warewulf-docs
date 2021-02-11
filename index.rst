@@ -61,7 +61,8 @@ This guide aims to give an introduction to Warewulf, brief installation instruct
    :caption: Contributing / Development
 
    /contributing/contributing
-   /contributing/development-environment
+   /contributing/development-environment-kvm
+   /contributing/development-environment-vbox
 
 .. toctree::
    :maxdepth: 1

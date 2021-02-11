@@ -9,17 +9,17 @@ Install Warewulf and dependencies
 
 .. code-block:: bash
 
-   sudo yum groupinstall "Development Tools"
-   sudo yum install epel-release
-   sudo yum install golang tftp-server dhcp-server nfs-utils
+   $ sudo dnf groupinstall "Development Tools"
+   $ sudo dnf install epel-release
+   $ sudo dnf install golang tftp-server dhcp-server nfs-utils
 
-   sudo systemctl stop firewalld
-   sudo systemctl disable firewalld
+   $ sudo systemctl stop firewalld
+   $ sudo systemctl disable firewalld
 
-   git clone https://github.com/ctrliq/warewulf.git
-   cd warewulf
-   make all
-   sudo make install
+   $ git clone https://github.com/ctrliq/warewulf.git
+   $ cd warewulf
+   $ make all
+   $ sudo make install
 
 Configure the controller
 =========================
@@ -56,10 +56,10 @@ Configure system services automatically
 
 .. code-block:: bash
 
-   sudo ./wwctl configure dhcp # Create the default dhcpd.conf file and start/enable service
-   sudo ./wwctl configure tftp # Install the base tftp/PXE boot files and start/enable service
-   sudo ./wwctl configure nfs  # Configure the exports and create an fstab in the default system overlay
-   sudo ./wwctl configure ssh  # Build the basic ssh keys to be included by the default system overlay
+   $ sudo wwctl configure dhcp # Create the default dhcpd.conf file and start/enable service
+   $ sudo wwctl configure tftp # Install the base tftp/PXE boot files and start/enable service
+   $ sudo wwctl configure nfs  # Configure the exports and create an fstab in the default system overlay
+   $ sudo wwctl configure ssh  # Build the basic ssh keys to be included by the default system overlay
 
 
 Pull and build the VNFS container and kernel
@@ -70,8 +70,8 @@ kernel from the controller node and set both in the "default" node profile.
 
 .. code-block:: bash
 
-   sudo ./wwctl container import docker://warewulf/centos-8 centos-8 --setdefault
-   sudo ./wwctl kernel import $(uname -r) --setdefault
+   $ sudo wwctl container import docker://warewulf/centos-8 centos-8 --setdefault
+   $ sudo wwctl kernel import $(uname -r) --setdefault
 
 Set up the default node profile
 ===============================
@@ -82,7 +82,7 @@ following:
 
 .. code-block:: bash
 
-   sudo ./wwctl profile set default -K $(uname -r) -C centos-7
+   $ sudo wwctl profile set default -K $(uname -r) -C centos-7
 
 Next we set some default networking configurations for the first ethernet device. On
 modern Linux distributions, the name of the device is not critical, as it will be setup
@@ -91,8 +91,8 @@ configuration, we can set them in the default profile as follows:
 
 .. code-block:: bash
 
-   sudo ./wwctl profile set default --netdev eth0 -M 255.255.255.0 -G 192.168.1.1
-   sudo ./wwctl profile list
+   $ sudo wwctl profile set default --netdev eth0 -M 255.255.255.0 -G 192.168.1.1
+   $ sudo wwctl profile list
 
 Add a node and build node specific overlays
 ===========================================
@@ -109,8 +109,8 @@ configurations which always supersede profile configurations.
 
 .. code-block:: bash
 
-   sudo ./wwctl node add n0000.cluster --netdev eth0 -I 192.168.1.100 --discoverable
-   sudo ./wwctl node list -a n0000
+   $ sudo wwctl node add n0000.cluster --netdev eth0 -I 192.168.1.100 --discoverable
+   $ sudo wwctl node list -a n0000
 
 Warewulf Overlays
 =================
@@ -140,10 +140,10 @@ Here are some of the common ``overlay`` commands:
 
 .. code-block:: bash
 
-   sudo ./wwctl overlay list -l
-   sudo ./wwctl overlay list -ls
-   sudo ./wwctl overlay edit default /etc/hello_world.ww
-   sudo ./wwctl overlay build -a
+   $ sudo wwctl overlay list -l
+   $ sudo wwctl overlay list -ls
+   $ sudo wwctl overlay edit default /etc/hello_world.ww
+   $ sudo wwctl overlay build -a
 
 Start the Warewulf daemon
 -------------------------
@@ -153,9 +153,9 @@ and then begin booting nodes.
 
 .. code-block:: bash
 
-   sudo ./wwctl ready
-   sudo ./wwctl server start
-   sudo ./wwctl server status
+   $ sudo wwctl ready
+   $ sudo wwctl server start
+   $ sudo wwctl server status
 
 Boot your compute node and watch it boot
 ----------------------------------------
