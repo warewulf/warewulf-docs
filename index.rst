@@ -61,6 +61,7 @@ This guide aims to give an introduction to Warewulf, brief installation instruct
    :caption: Contributing / Development
 
    /contributing/contributing
+   /contributing/documentation
    /contributing/development-environment-kvm
    /contributing/development-environment-vbox
 
