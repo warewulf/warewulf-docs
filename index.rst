@@ -12,6 +12,8 @@ This guide aims to give an introduction to Warewulf, brief installation instruct
 
    /about/introduction
    /about/architecture
+   /about/security
+   /about/templating
 
 .. toctree::
    :maxdepth: 1

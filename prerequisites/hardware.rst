@@ -1,0 +1,5 @@
+.. _prerequisites-hardware:
+
+========
+Hardware
+========
