@@ -106,18 +106,18 @@ I have VirtualBox running on my desktop.
           - /var/warewulf
 
     # Configure system service automatically
-    $ sudo wwctl configure dhcp # Create the default dhcpd.conf file and start/enable service
-    $ sudo wwctl configure tftp # Install the base tftp/PXE boot files and start/enable service
-    $ sudo wwctl configure nfs  # Configure the exports and create an fstab in the default system overlay
-    $ sudo wwctl configure ssh  # Build the basic ssh keys to be included by the default system overlay
+    $ sudo wwctl configure dhcp --persist # Create the default dhcpd.conf file and start/enable service
+    $ sudo wwctl configure tftp --persist # Install the base tftp/PXE boot files and start/enable service
+    $ sudo wwctl configure nfs  --persist # Configure the exports and create an fstab in the default system overlay
+    $ sudo wwctl configure ssh  --persist # Build the basic ssh keys to be included by the default system overlay
 
     # Pull and build the VNFS container and kernel
-    $ sudo wwctl container import docker://warewulf/centos-8 centos-8 --setdefault
+    $ sudo wwctl container import docker://warewulf/centos-7 centos-7 --setdefault
     $ sudo wwctl kernel import build $(uname -r) --setdefault
 
     # Set up the default node profile
     $ sudo wwctl profile set default -K $(uname -r) -C centos-7
-    $ sudo wwctl profile set default --netdev eth0 -M WW_server_subnet_mask -G WW_server_ip
+    $ sudo wwctl profile set default --netdev eth0 -M 255.255.255.0 -G 10.0.8.4
     $ sudo wwctl profile list
 
     # Add a node and build node specific overlays
