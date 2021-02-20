@@ -12,7 +12,7 @@ Warewulf's primary design goal is to facilitate software installation, configura
 The Beowulf
 -----------
 
-The original `Beowulf Cluster <https://en.wikipedia.org/wiki/Beowulf_cluster>`_ was developed in 1996 by Dr. Thomas Sterling and Dr. Donald Becker at NASA. The architecture is defined as a group of similar compute worker nodes all connected together using standard commodity equipment on a private network segment. The control node is dual-homed (has two network interface cards) with one of these network interface cards attached to the upstream network and the other connected to the same private network which connects the compute worker nodes (as seen in the figure below).
+The original `Beowulf Cluster <https://en.wikipedia.org/wiki/Beowulf_cluster>`_ was developed in 1996 by Dr. Thomas Sterling and Dr. Donald Becker at NASA. The architecture is defined as a group of similar compute worker nodes all connected together using standard commodity equipment on a private network segment. The control node is dual homed (has two network interface cards) with one of these network interface cards attached to the upstream network and the other connected to the same private network which connects the compute worker nodes (as seen in the figure below).
 
 .. image:: /images/beowulf_architecture.png
 
@@ -21,9 +21,9 @@ This architecture is very advantageous for creating a scalable HPC cluster resou
 Provisioning
 ------------
 
-Warewulf is designed to support the simplest of clusters, but also the most complicated, largest, and specialized resources that are in demand today. But when implementing all the various configurations, we rely on the basic architecture illustrated above. We can rely on such a siimple schematic because Warewulf is designed to "own" the network broadcast domain and manage how these worker nodes boot.
+Warewulf is designed to support the simplest of clusters, but also the most complicated, largest, and specialized resources that are in demand today. But when implementing all the various configurations, we rely on the basic architecture illustrated above. We can rely on such a simple schematic because Warewulf is designed to "own" the network broadcast domain and manage how these worker nodes boot.
 
-As mentioned before, Warewulf is designed first and foremost to be a stateless provisioning subsystem. This means that the worker nodes maintain no state about their configuration, operating system or purpose when they are powered off. So when these systems boot, they retain no knowledge of who they are, what they are supposed to do or how they got there. For these reasons, the worker nodes will need to boot via `PXE <https://en.wikipedia.org/wiki/Preboot_Execution_Environment>`_ in order to retrieve a personality and a purpose.
+As mentioned before, Warewulf is designed first and foremost to be a stateless provisioning subsystem. This means that the worker nodes maintain no state about their configuration, operating system or purpose when they are powered off. So, when these systems boot, they retain no knowledge of who they are, what they are supposed to do or how they got there. For these reasons, the worker nodes will need to boot via `PXE <https://en.wikipedia.org/wiki/Preboot_Execution_Environment>`_ in order to retrieve a personality and a purpose.
 
 PXE
 ~~~
@@ -36,7 +36,7 @@ When the system boots via PXE, it will begin a chain reaction of events:
 2. The BIOS will run through all of its functions and finish with boot devices
 3. The boot devices are attempted to be booted in the defined order
 4. When it gets to the network boot device, PXE is run from the firmware on the network card
-5. PXE will request a Bootp/DHCP address on the network which is handled by the controller node
+5. PXE will request a BOOTP/DHCP address on the network which is handled by the controller node
 6. If the DHCP response includes a boot file name, it will download this file (iPXE boot image) over TFTP
 7. Once iPXE is downloaded, it is loaded by the network card and it will request a configuration from the 
    controller node
@@ -56,7 +56,7 @@ Warewulf will configure the controller's DHCP and TFTP services and put all the 
 Post PXE
 ~~~~~~~~
 
-Once the worker node has received all the required files, the kernel will boot and the runtime components will be loaded into the kernel's initial RAM file system (initramfs). The order of these processes is important because each layer is dependant on the previous. The layers are implemented in the following order:
+Once the worker node has received all the required files, the kernel will boot, and the runtime components will be loaded into the kernel's initial RAM file system (initramfs). The order of these processes is important because each layer is dependent on the previous. The layers are implemented in the following order:
 
 1. VNFS/Container image
 2. Kernel modules
