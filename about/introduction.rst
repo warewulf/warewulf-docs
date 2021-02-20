@@ -4,11 +4,11 @@
 Introduction
 ============
 
-Warewulf is an operating system provisioning system for Linux. It was created in 2001 to facilitate and scale the administration of HPC clusters in a way that allowed for simple, turn key solutions as well as support flexibility and configurability at scale.
+Warewulf is an operating system provisioning system for Linux that is designed to produce simple, turnkey HPC deployment solutions that maintain flexibility and configurability at scale.
 
-Since its initial release, Warewulf has become the most popular open source and vendor-agnostic provisioning system within the HPC ecosystem with worldwide adoption. Warewulf is known for its massive scalability and ease of use for stateless (disk optional) provisioning.
+Since its initial release in 2001, Warewulf has become the most popular open source and vendor-agnostic provisioning system within the global HPC community. Warewulf is known for its massive scalability and simple management of stateless (disk optional) provisioning.
 
-In a nutshell, node operating system images are containers. These containers are built into a bootable format called a "Virtual Node File System" (VNFS) image which is provisioned out to nodes at boot. The VNFS and kernel can be configured for any number of nodes which means you could have all of your nodes booting the exact same container VNFS image. The subtle differences in operating system configurations between the nodes are handled in "overlays".
+In a nutshell, cluster node operating system images are containers. These containers are built into a bootable format called a "Virtual Node File System" (VNFS) image which is provisioned out to nodes when they boot. A VNFS and kernel pair can be distributed to any number of nodes, which means you could have all of your nodes booting the exact same container VNFS image. To avoid the administrative headache of too many customized VNFS images, subtle differences between node operating system configurations are handled with "overlays". 
 
 On boot, each node receives, in the following order:
 
@@ -25,14 +25,14 @@ All the images which are transferred for provisioning are prebuilt static compon
 Warewulf Design Tenants
 =======================
 
-To enable simple, scalable, and flexible operating system management at scale.
+To enable simple, scalable and flexible operating system management at scale.
 
-- **Lightweight**: Warewulf needs to do it's job and stay out of the way. There should be no underlying system dependencies, changes, or "stack" for the controller or worker nodes.
+- **Lightweight**: Warewulf needs to do its job and stay out of the way. There should be no underlying system dependencies, changes or "stack" for the controller or worker nodes.
    
-- **Simple**: Warewulf is used by hobbyists, researchers, scientists, as well as systems admnistrators and engineers. This means that Warewulf must be simple to use and intuitive to understand.
+- **Simple**: Warewulf is used by hobbyists, researchers, scientists, engineers and systems administrators. This means that Warewulf must be simple to use and understand.
    
-- **Flexible**: Warewulf must remain highly flexible to be able to fit in any environment, from a computer lab with graphical workstations, to an under-desk clusters, as well as massive centers providing traditional HPC capabilities to thousands of users.
+- **Flexible**: Warewulf is highly flexible and can address the needs of any environment-- from a computer lab with graphical workstations, to under-the-desk clusters, to massive supercomputing centers providing traditional HPC capabilities to thousands of users.
    
-- **Agnostic**: From the underlying Linux distribution to the underlying hardware, Warewulf should be as agnostic and standards compliant as possible. From ARM to X86, Atos to Dell, Warewulf can provision it all equally well with no favorites.
+- **Agnostic**: From the Linux distribution to the underlying hardware, Warewulf should be as agnostic and standards compliant as possible. From ARM to x86, Atos to Dell, Warewulf can provision it all equally well with no favorites.
    
 - **Open Source**: It is imperative that Warewulf be and remain absolutely Open Source.
