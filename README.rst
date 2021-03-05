@@ -1,11 +1,4 @@
 Warewulf Documentation
 ######################
 
-.. class:: no-web no-pdf
-
-    |docs|
-
-
-.. |docs| image:: https://readthedocs.org/projects/warewulf/badge/?version=latest
-    :target: https://warewulf.readthedocs.io
-    :alt: ReadTheDocs
+This repository is obsolete. Warewulf documention is now in the `docs` folder of the Warewulf repository.
