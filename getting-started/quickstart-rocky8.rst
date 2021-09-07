@@ -16,7 +16,7 @@ Install Warewulf and dependencies
    $ sudo systemctl stop firewalld
    $ sudo systemctl disable firewalld
 
-   $ git clone https://github.com/ctrliq/warewulf.git
+   $ git clone https://github.com/hpng/warewulf.git
    $ cd warewulf
    $ make all
    $ sudo make install
